@@ -1,8 +1,12 @@
 import React from 'react';
-import { Button, View } from 'react-native';
+import { Button, View, Dimensions } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Home, Programs, Lab31, Lab32, } from './lab_components/index';
+
+const windowDimensions = Dimensions.get('window');
+const screenDimensions = Dimensions.get('screen');
+
 
 const Stack = createNativeStackNavigator();
 
