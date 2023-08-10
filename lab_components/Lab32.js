@@ -1,5 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image, TouchableOpacity, FlatList } from "react-native";
+const widthDimension = Dimensions.get('window').width;
+
 
 // Import images
 const IT_Logo = require("../assets/IT_Logo.png");
@@ -45,6 +47,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+    width: widthDimension,
   },
   img: {
     height: 70,

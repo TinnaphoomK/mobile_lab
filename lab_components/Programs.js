@@ -9,6 +9,7 @@ const images = [
   { src: require("../assets/3.jpg"), name: "Data Science" },
   { src: require("../assets/4.jpg"), name: "Web Development" },
 ];
+const widthDimension = Dimensions.get('window').width;
 
 export default function App() {
   return (
@@ -43,6 +44,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     backgroundColor: "blue",
     height: 100,
+    width: widthDimension,
   },
   container: {
     flex: 1,

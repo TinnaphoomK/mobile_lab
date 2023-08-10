@@ -7,6 +7,7 @@ import {
   Image,
   Button,
 } from "react-native";
+const widthDimension = Dimensions.get('window').width;
 
 const App = () => {
   const buttons = [
@@ -40,6 +41,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    width: widthDimension,
   },
   imgs: {
     width: 120,

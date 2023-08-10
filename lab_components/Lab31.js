@@ -10,6 +10,8 @@ import {
     FlatList,
 } from "react-native";
 
+const widthDimension = Dimensions.get('window').width;
+
 export default function Lab31() {
     const [text, setText] = useState("");
     const [array, setArray] = useState([]);
@@ -50,6 +52,7 @@ const styles = StyleSheet.create({
         marginVertical: 40,
         flex: 1,
         alignItems: "center",
+        width: widthDimension,
     },
     input: {
         borderWidth: 1,
