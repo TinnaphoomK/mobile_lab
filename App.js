@@ -1,9 +1,8 @@
 import React from 'react';
-import { Button, View, Dimensions, Text } from 'react-native';
+import { Button, View  } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Home, Programs, Lab31, Lab32, Lab43} from './lab_components/index';
-import { Header } from "/components/Header"
+import { Home, Programs, Lab31, Lab32, Lab41} from './lab_components/index';
 
 
 
@@ -32,7 +31,7 @@ const HomeScreen = ({ navigation }) => {
       />
       <Button
         title="StartGameScreen"
-        onPress={() => navigation.navigate('Lab43')}
+        onPress={() => navigation.navigate('Lab41')}
       /> 
     </View>
   );
@@ -65,8 +64,8 @@ export default function Lab3() {
           component={Lab32}
         />
         <Stack.Screen
-          name="Lab43"
-          component={Lab43}
+          name="Lab41"
+          component={Lab41}
           />
       </Stack.Navigator>
     </NavigationContainer>

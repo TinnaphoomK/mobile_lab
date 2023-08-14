@@ -7,6 +7,7 @@ import {
   Image,
   Button,
 } from "react-native";
+import { Dimensions } from "react-native";
 const widthDimension = Dimensions.get('window').width;
 
 const App = () => {

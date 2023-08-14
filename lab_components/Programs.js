@@ -1,5 +1,6 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, Image, TouchableOpacity, ScrollView } from "react-native";
+import { Dimensions } from "react-native";
 
 // Import images
 const IT_Logo = require("../assets/IT_Logo.png");
