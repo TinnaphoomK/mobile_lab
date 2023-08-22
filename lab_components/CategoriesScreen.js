@@ -3,55 +3,38 @@ import {
   View,
   Text,
   Button,
-  StyleSheet,
-  Platform,
   FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  Platform,
 } from "react-native";
-import { CATEGORIES, MEALS } from "../data/dummy-data";
-import MealItem from "../components/MealItem";
-// import { log } from "console";
+import { CATEGORIES } from "../data/dummy-data";
+import CategoryGridTile from "../components/CategoryGridTile";
 
-const CategoryMealsScreen = ({route, navigation}) => {
-  const renderMealItem = (itemData) => {
+const CategoriesScreen = ({navigation}) => {
+  const renderGridItem = (itemData) => {
     return (
-      <MealItem
+      <CategoryGridTile
         title={itemData.item.title}
-        duration={itemData.item.duration}
-        complexity={itemData.item.complexity}
-        affordability={itemData.item.affordability}
-        image={itemData.item.imageUrl}
-        onSelectMeal={() => {
-          { navigation.navigate("MealDetail", {dish:itemData.item.title, step:itemData.item.steps})}
+        color={itemData.item.color}
+        onSelect={() => {
+          { navigation.navigate("CategoryMeals", {categoryid:itemData.item.id, categoryTitle:itemData.item.title})}
         }}
       />
 
-      // ส่วนนี้ <View>...</View> ใช้เพื่อการทดลอง และให้คอมเมนต์โค้ดส่วนนี้และเรียกใช้ <MealItem> ข้างบนแทน
+      // ส่วนนี้ <View>...</View>ใช้เพื่อการทดลอง และให้คอมเมนต์โค้ดส่วนนี้และเรียกใช้ <CategoryGridTile> ข้างต้นแทน
       // <View style={{ height: 50, width: "40%" }}>
       //   <Text>{itemData.item.title}</Text>
       // </View>
     );
   };
-  const catId = route.params.categoryid
-
-  const displayedMeals = MEALS.filter(
-    (meal) => {
-      return meal.categoryIds.indexOf(catId) >= 0
-    }
-  );
-
 
   return (
-    <View style={styles.screen}>
-      <FlatList
-        style={{ width: "100%" }}
-        data= {displayedMeals}
-        renderItem= {renderMealItem}
-      />
-    </View>
+    <FlatList data={CATEGORIES} renderItem={renderGridItem} numColumns={2} />
 
-    // ส่วนนี้ <View>...</View>ใช้เพื่อการทดลอง และให้คอมเมนต์โค้ดส่วนนี้และเรียกใช้ <FlatList> ข้างบนแทน
+    // ส่วนนี้ <View>...</View>ใช้เพื่อการทดลอง และให้คอมเมนต์โค้ดส่วนนี้และเรียกใช้ <FlatList> ข้างต้นแทน
     // <View>
-    //   <Text>Category Meals Screen!!</Text>
+    //   <Text>Categories Screen</Text>
     // </View>
   );
 };
@@ -64,4 +47,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default CategoryMealsScreen;
+export default CategoriesScreen;
