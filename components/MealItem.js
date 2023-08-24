@@ -1,49 +1,79 @@
+          
 import React from "react";
-import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
 
-const CategoryGridTile = (props) => {
+const MealItem = (props) => {
   return (
-    <TouchableOpacity
-      style={styles.gridItem}
-      onPress={() => {
-        props.onSelect();
-      }}
-    >
-      <View
-        style={{ ...styles.container, ...{ backgroundColor: props.color } }}
-      >
-        {/* <Text>{itemData.item.title}</Text> */}
-        <Text style={styles.title} numberOfLines={2}>
-          {props.title}
-        </Text>
-      </View>
-    </TouchableOpacity>
+    <View style={styles.mealItem}>
+      <TouchableOpacity onPress={props.onSelectMeal}>
+        <View>
+          <View style={{ ...styles.mealRow, ...styles.mealHeader }}>
+            <ImageBackground
+              source={{ uri: props.image }}
+              style={styles.bgImage}
+            >
+              <View style={styles.titleContainer}>
+                <Text style={styles.title} numberOfLines={1}>
+                  {props.title}
+                </Text>
+              </View>
+            </ImageBackground>
+          </View>
+          <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
+            <Text>{props.duration}</Text>
+            <Text>{props.complexity}</Text>
+            <Text>{props.affordability}</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  gridItem: {
-    flex: 1,
-    margin: 15,
-    height: 150,
-  },
-  container: {
-    flex: 1,
+  mealItem: {
+    height: 200,
+    width: "100%",
+    backgroundColor: "#f5f5f5",
     borderRadius: 10,
-    shadowColor: "black",
-    shadowOpacity: 0.26,
-    shadowOffset: { width: 0, height: 2 },
-    shadowRadius: 10,
-    elevation: 3,
-    padding: 15,
+    overflow: "hidden",
+  },
+  mealRow: {
+    flexDirection: "row",
+  },
+  mealHeader: {
+    height: "85%",
+  },
+
+  mealDetail: {
+    paddingHorizontal: 10,
+    justifyContent: "space-between",
+    alignItems: "center",
+    height: "15%",
+  },
+  bgImage: {
+    width: "100%",
+    height: "100%",
     justifyContent: "flex-end",
-    alignItems: "flex-end",
+  },
+  titleContainer: {
+    backgroundColor: "rgba(0,0,0,0.5)",
+    paddingVertical: 5,
+    paddingHorizontal: 12,
   },
   title: {
-    fontSize: 22,
+    // fontFamily: "open-sans-bold",
+    fontSize: 20,
     fontWeight: "bold",
-    textAlign: "right",
+    color: "white",
+    textAlign: "center",
   },
 });
 
-export default CategoryGridTile;
+export default MealItem;

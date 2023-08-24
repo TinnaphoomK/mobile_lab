@@ -3,34 +3,32 @@ import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import CategoriesScreen from "./screens/CategoriesScreen"
-import CategoryMealsScreen from "./screens/CategoryMealsScreen"
-import MealDetailScreen from "./screens/MealDetailScreen"
+import CategoriesScreen from "./CategoriesScreen"
+import CategoryMealsScreen from "./CategoryMealsScreen"
+import MealDetailScreen from "./MealDetailScreen"
 // import { title } from "process";
 
 
 
 const MealsNavigator = createNativeStackNavigator();
-// const Stack = createNativeStackNavigator()
 
 export default function App() {
   return (
-    <NavigationContainer>
       <MealsNavigator.Navigator initialRouteName = "S1"
         screenOptions= {{ 
           headerStyle: { backgroundColor: "#4a148c", },
           headerTintColor: "white"
         }}>
-        <MealsNavigator.Screen name = "Category" component = {CategoriesScreen}
+        <MealsNavigator.Screen name="Category" component={CategoriesScreen}
           options={{
             title: "Meal Categories"
-          }}  />
+          }}  
+        />
         <MealsNavigator.Screen name = "CategoryMeals" component = {CategoryMealsScreen} 
           options={
             ({route}) => ({
               title : route.params.categoryTitle
             })
-          
           } />
         <MealsNavigator.Screen name = "MealDetail" component = {MealDetailScreen} 
           options={
@@ -40,7 +38,6 @@ export default function App() {
           }
         />
       </MealsNavigator.Navigator>
-    </NavigationContainer>
   );
 }
 
