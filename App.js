@@ -3,54 +3,18 @@ import { Button, View  } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Home, Programs, Lab31, Lab32, Lab41, Lab51 } from './lab_components/index';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 
 
 
-const Stack = createNativeStackNavigator();
+const Stack = createDrawerNavigator();
 
-const HomeScreen = ({ navigation }) => {
-  return (
-    <View>
-      <Button
-        title="Home"
-        onPress={() => navigation.navigate('Home')}
-      />
-      <Button
-        title="Programs"
-        onPress={() => navigation.navigate('Programs')}
-      />
-
-      <Button
-        title="Lab31"
-        onPress={() => navigation.navigate('Lab31')}
-      />
-      <Button
-        title="Lab32"
-        onPress={() => navigation.navigate('Lab32')}
-      />
-      <Button
-        title="StartGameScreen"
-        onPress={() => navigation.navigate('Lab41')}
-      /> 
-      <Button
-        title="Lab51"
-        onPress={() => navigation.navigate('Lab51')}
-      />
-    </View>
-
-  );
-};
 
 export default function Lab3() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen
-          name="HomeScreen"
-          component={HomeScreen}
-          options={{ title: 'Lab' }}
-        />
         <Stack.Screen
           name="Home"
           component={Home}
