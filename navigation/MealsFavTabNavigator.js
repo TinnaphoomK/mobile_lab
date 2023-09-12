@@ -3,7 +3,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import FavNav from "./FavNavigator";
 import MealNavigator from "./MealNavigator";
-import { NavigationContainer } from "@react-navigation/native";
 
 const Tab = createBottomTabNavigator();
 

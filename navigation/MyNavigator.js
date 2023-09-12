@@ -2,8 +2,6 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { NavigationContainer } from "@react-navigation/native";
-import MealsFavTabNavigator from "./MealsFavTabNavigator";
 import FilterNavigator from "./FilterNavigator";
 import CategoriesScreen from "../lab_components/CategoriesScreen";
 
