@@ -1,52 +1,30 @@
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Image,
-  Button,
-} from "react-native";
-import { Dimensions } from "react-native";
-const widthDimension = Dimensions.get('window').width;
+import { useRef } from "react";
+import { Animated, Button, View } from "react-native";
 
-const App = () => {
-  const buttons = [
-    { title: "PROGRAMS", link: "" },
-    { title: "ABOUT US", link: "" },
-  ];
+export default SpringScreen = () => {
+  const springVal = useRef(new Animated.Value(0.3)).current;
+
+  const spring = () => {
+    Animated.spring(springVal, {
+      toValue: 1,
+      friction: 1,
+      useNativeDriver: true,
+    }).start(() => {
+      springVal.setValue(0.3);
+    });
+  };
+
   return (
-    <>
-      <View style={styles.container}>
-        <Image
-          resizeMode="contain"
-          style={styles.imgs}
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <Animated.Image
+          style={{ width: 240, height: 200, transform: [{ scale: springVal }] }}
           source={require("../../assets/IT_Logo.png")}
-        ></Image>
+        />
       </View>
-    </>
+      <View style={{ marginBottom: 10 }}>
+        <Button style={{}} title="Spring" onPress={spring} />
+      </View>
+    </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    margin: 0,
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    width: widthDimension,
-  },
-  imgs: {
-    width: 120,
-    height: 120,
-  },
-  buttons: {
-    // backgroundColor: "red",
-    justifyContent: "flex-end",
-    rowGap: 20,
-    margin: 20,
-  },
-
-});
-
-export default App;

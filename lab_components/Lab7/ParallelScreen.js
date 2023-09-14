@@ -1,52 +1,53 @@
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-  Image,
-  Button,
-} from "react-native";
-import { Dimensions } from "react-native";
-const widthDimension = Dimensions.get('window').width;
+import { useRef } from "react";
+import { Animated, Button, Easing, View } from "react-native";
 
-const App = () => {
-  const buttons = [
-    { title: "PROGRAMS", link: "" },
-    { title: "ABOUT US", link: "" },
-  ];
+export default ParallelScreen = () => {
+  const header = useRef(new Animated.Value(0.3)).current;
+  const description = useRef(new Animated.Value(0)).current;
+
+  const translateX = description.interpolate({
+    inputRange: [0, 0.25, 0.75, 1],
+    outputRange: [0, -50, 50, 0],
+  });
+
+  const animate = () => {
+    Animated.parallel([
+      Animated.spring(header, {
+        toValue: 0.8,
+        friction: 1,
+        useNativeDriver: true,
+      }),
+      Animated.timing(description, {
+        toValue: 1,
+        duration: 3500,
+        easing: Easing.bounce,
+        useNativeDriver: true,
+      }),
+    ]).start(() => {
+      header.setValue(0.3);
+      description.setValue(0);
+    });
+  };
+
   return (
-    <>
-      <View style={styles.container}>
-        <Image
-          resizeMode="contain"
-          style={styles.imgs}
+    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+        <Animated.Image
+          style={{ width: 240, height: 200, transform: [{ scale: header }] }}
           source={require("../../assets/IT_Logo.png")}
-        ></Image>
+        />
+        <Animated.Text
+          style={{
+            color: 'orange',
+            fontSize: 24,
+            fontWeight: 'bold',
+            transform: [{ translateX }],
+          }}
+        >
+          Welcome to Faculty of IT!
+        </Animated.Text>
       </View>
-    </>
+      <Button title="Parallel" onPress={animate} />
+    </View>
   );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    margin: 0,
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    width: widthDimension,
-  },
-  imgs: {
-    width: 120,
-    height: 120,
-  },
-  buttons: {
-    // backgroundColor: "red",
-    justifyContent: "flex-end",
-    rowGap: 20,
-    margin: 20,
-  },
-
-});
-
-export default App;
+}

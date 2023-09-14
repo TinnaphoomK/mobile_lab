@@ -1,6 +1,6 @@
 import React from "react";
 import { View, Text, Button, StyleSheet, FlatList } from "react-native";
-import { MEALS } from "../data/dummy-data";
+import { MEALS } from "../../data/dummy-data";
 
 const MealDetailScreen = ({route, navigation}) => {
   // เขียนโค้ดเพิ่ม เพื่อดึงข้อมูลเกี่ยวกับเมนูอาหารที่ผู้ใช้เลือกเอาไว้

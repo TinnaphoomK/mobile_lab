@@ -9,6 +9,7 @@ import {
   Lab41,
   Lab51,
   Lab7,
+  Lab8,
 } from "./lab_components/index";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 
@@ -28,6 +29,7 @@ export default function Lab3() {
         <Stack.Screen name="Lab41" component={Lab41} />
         <Stack.Screen name="Lab51" component={Lab51} />
         <Stack.Screen name="Lab7" component={Lab7} />
+        <Stack.Screen name="Lab8" component={Lab8} />
       </Stack.Navigator>
     </NavigationContainer>
   );

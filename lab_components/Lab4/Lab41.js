@@ -2,10 +2,10 @@
 
 import React, { useState } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import Header from "../components/Header";
-import GameOverScreen from "../lab_components/GameOverScreen";
+import Header from "../../components/Header";
+import GameOverScreen from "./GameOverScreen";
 import GameScreen from "../lab_components/GameScreen";
-import StartGameScreen from "../lab_components/StartGameScreen";
+import StartGameScreen from "./StartGameScreen";
 import { Dimensions } from "react-native";
 
 export default function App() {
