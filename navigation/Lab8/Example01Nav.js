@@ -6,17 +6,11 @@ const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <Stack.Navigator
-      initialRouteName="Exam1"
-      screenOptions={{
-        headerStyle: { backgroundColor: "#4a148c" },
-        headerTintColor: "white",
-      }}
-    >
+    <Stack.Navigator>
       <Stack.Screen
         name="Exam01"
         component={Exam1}
-        options={{ title: "Exam01" }}
+        options={{ title: "Example01" }}
       />
     </Stack.Navigator>
   );
